@@ -53,7 +53,11 @@ def create():
     return render_template('create_card.html')
 @app.route('/voice')
 def voice():
-    text=speech_ru()
+    try:
+        text=speech_ru()
+    except:
+        print("Ошибка!")
+    
     return render_template('create_card.html', text=text)
 #Форма карты
 @app.route('/form_create', methods=['GET','POST'])
